@@ -1,0 +1,63 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  identifier: MyString
+  registration_date: 2024-04-18 13:46:00
+  location: MyString
+  originator_agent: MyString
+  recipient_agent: MyString
+  production_date: 2024-04-18 13:46:00
+  transmission_date: 2024-04-18 13:46:00
+  reception_date: 2024-04-18 13:46:00
+  related_activities: MyText
+  related_documents: MyText
+  title: MyString
+  subject: MyString
+  description: MyText
+  coverage: MyText
+  language: MyString
+  encoding_format: MyString
+  media_type: MyString
+  compression_encryption: MyString
+  hardware_software_dependencies: MyText
+  aggregation_level: MyString
+  extent: MyString
+  preservation_responsibility: MyString
+  preservation_action_date: 2024-04-18 13:46:00
+  preservation_activity_type: MyString
+  preservation_impact: MyText
+  next_preservation_action: MyText
+  physical_storage_support: MyText
+  access_use_history: MyText
+  file: 
+
+two:
+  identifier: MyString
+  registration_date: 2024-04-18 13:46:00
+  location: MyString
+  originator_agent: MyString
+  recipient_agent: MyString
+  production_date: 2024-04-18 13:46:00
+  transmission_date: 2024-04-18 13:46:00
+  reception_date: 2024-04-18 13:46:00
+  related_activities: MyText
+  related_documents: MyText
+  title: MyString
+  subject: MyString
+  description: MyText
+  coverage: MyText
+  language: MyString
+  encoding_format: MyString
+  media_type: MyString
+  compression_encryption: MyString
+  hardware_software_dependencies: MyText
+  aggregation_level: MyString
+  extent: MyString
+  preservation_responsibility: MyString
+  preservation_action_date: 2024-04-18 13:46:00
+  preservation_activity_type: MyString
+  preservation_impact: MyText
+  next_preservation_action: MyText
+  physical_storage_support: MyText
+  access_use_history: MyText
+  file: 
