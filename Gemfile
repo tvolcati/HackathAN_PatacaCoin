@@ -19,6 +19,8 @@ gem 'active_storage_validations'
 gem 'simple_form'
 gem 'bootstrap'
 gem 'sassc-rails'
+gem "devise"
+
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
