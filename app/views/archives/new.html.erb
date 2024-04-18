@@ -1,2 +1,16 @@
-<h1>Archives#new</h1>
-<p>Find me in app/views/archives/new.html.erb</p>
+<!-- app/views/archives/new.html.erb -->
+<h1>New Archive</h1>
+
+<%= simple_form_for @archive do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :category, collection: ["Textual", "Sonoro", "Iconografico", "Cartografico", "Audio-Visual"], prompt: "Select a Category" %>
+    <%= f.input :file, as: :file %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

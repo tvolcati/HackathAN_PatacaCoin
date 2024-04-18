@@ -4,3 +4,5 @@
 2024-04-18 13:43:25.525 -03 [51761] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2024-04-18 13:43:25.529 -03 [51762] LOG:  database system was shut down at 2024-04-18 13:43:08 -03
 2024-04-18 13:43:25.533 -03 [51761] LOG:  database system is ready to accept connections
+2024-04-18 14:27:06.420 -03 [54996] ERROR:  column "title" of relation "archives" already exists
+2024-04-18 14:27:06.420 -03 [54996] STATEMENT:  ALTER TABLE "archives" ADD "title" character varying
