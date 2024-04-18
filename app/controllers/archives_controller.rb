@@ -3,7 +3,12 @@ class ArchivesController < ApplicationController
   before_action :set_archive, only: %i[show edit update destroy download]
 
   def index
-    @archives = Archive.all
+    @categories = ['Textual', 'Sonoro', 'Iconografico', 'Cartografico', 'Audio-Visual']
+    if params[:category].present?
+      @archives = Archive.where(category: params[:category])
+    else
+      @archives = Archive.all
+    end
   end
 
   def show; end
@@ -38,6 +43,7 @@ class ArchivesController < ApplicationController
   end
 
   def download
+    @archive = Archive.find(params[:id])
     send_data(@archive.file.download, filename: @archive.file.filename.to_s)
   end
 

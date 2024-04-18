@@ -1,2 +1,51 @@
-<h1>Archives#index</h1>
-<p>Find me in app/views/archives/index.html.erb</p>
+<!-- app/views/archives/index.html.erb -->
+<h1>Archivos</h1>
+
+<%= form_with(url: archives_path, method: :get, local: true) do |form| %>
+  <%= form.label :category, 'Filter by Category:' %>
+  <%= form.select :category, options_for_select(@categories), include_blank: 'All' %>
+  <%= form.submit 'Filter' %>
+<% end %>
+
+<div class="archives-grid">
+  <% @archives.each do |archive| %>
+    <div class="archive-card">
+      <%= link_to archive_path(archive) do %>
+        <h4><%= archive.title %></h4>
+        <% if archive.file.attached? %>
+          <% if archive.file.content_type.start_with?('image/') %>
+            <%= image_tag(archive.file, size: '100x100', class: 'archive-preview') %>
+          <% else %>
+            <% # Display a placeholder or icon for non-image files %>
+            <%= content_tag(:div, 'File Preview', class: 'file-placeholder') %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .archives-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .archive-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  .archive-preview {
+    width: 100%;
+    height: auto;
+  }
+  .file-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

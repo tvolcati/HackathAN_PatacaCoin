@@ -1,2 +1,29 @@
-<h1>Archives#show</h1>
-<p>Find me in app/views/archives/show.html.erb</p>
+<!-- app/views/archives/show.html.erb -->
+<h1>Archive Details</h1>
+
+<div class="archive-details">
+  <p><strong>Title:</strong> <%= @archive.title %></p>
+  <p><strong>Category:</strong> <%= @archive.category %></p>
+  <% # Add other metadata fields here %>
+  <p><strong>Description:</strong> <%= @archive.description %></p>
+  <p><strong>Originator Agent:</strong> <%= @archive.originator_agent %></p>
+
+  <% if @archive.file.attached? %>
+    <%= link_to 'Download File', download_archive_path(@archive), class: 'button' %>
+  <% end %>
+  <%= link_to 'Edit', edit_archive_path(@archive), class: 'button' %>
+</div>
+
+<style>
+  .button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .button:hover {
+    background-color: #0056b3;
+  }
+</style>

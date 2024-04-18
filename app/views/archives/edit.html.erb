@@ -1,2 +1,46 @@
-<h1>Archives#edit</h1>
-<p>Find me in app/views/archives/edit.html.erb</p>
+<!-- app/views/archives/edit.html.erb -->
+<h1>Edit Archive</h1>
+
+<%= simple_form_for @archive do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :category, collection: ['Textual', 'Sonoro', 'Iconografico', 'Cartografico', 'Audio-Visual'], prompt: "Select a Category" %>
+    <%# Add the rest of the fields for the Archive metadata here %>
+    <%= f.input :identifier %>
+    <%= f.input :registration_date, as: :datetime %>
+    <%= f.input :location %>
+    <%= f.input :originator_agent %>
+    <%= f.input :recipient_agent %>
+    <%= f.input :production_date, as: :datetime %>
+    <%= f.input :transmission_date, as: :datetime %>
+    <%= f.input :reception_date, as: :datetime %>
+    <%= f.input :related_activities %>
+    <%= f.input :related_documents %>
+    <%= f.input :subject %>
+    <%= f.input :description %>
+    <%= f.input :coverage %>
+    <%= f.input :language %>
+    <%= f.input :encoding_format %>
+    <%= f.input :media_type %>
+    <%= f.input :compression_encryption %>
+    <%= f.input :hardware_software_dependencies %>
+    <%= f.input :aggregation_level %>
+    <%= f.input :extent %>
+    <%= f.input :preservation_responsibility %>
+    <%= f.input :preservation_action_date, as: :datetime %>
+    <%= f.input :preservation_activity_type %>
+    <%= f.input :preservation_impact %>
+    <%= f.input :next_preservation_action %>
+    <%= f.input :physical_storage_support %>
+    <%= f.input :access_use_history %>
+    <%# You can add a field for the file upload if you want to allow users to replace the file %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Save Changes' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Archive', archive_path(@archive), class: 'btn btn-default' %>
