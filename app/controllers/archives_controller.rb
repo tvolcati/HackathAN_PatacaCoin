@@ -3,6 +3,7 @@ class ArchivesController < ApplicationController
   before_action :set_archive, only: %i[show edit update destroy download]
 
   def index
+    @archives = policy_scope(Archive)
     @categories = ['Textual', 'Sonoro', 'Iconografico', 'Cartografico', 'Audio-Visual']
     if params[:category].present?
       @archives = Archive.where(category: params[:category])
@@ -11,17 +12,22 @@ class ArchivesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    authorize @archive
+  end
 
   def new
     @archive = Archive.new
+    authorize @archive
   end
 
-  def edit; end
+  def edit
+    authorize @archive
+  end
 
   def create
     @archive = Archive.new(archive_params)
-
+    authorize @archive
     if @archive.save
       redirect_to @archive, notice: 'Archive was successfully created.'
     else
@@ -30,6 +36,7 @@ class ArchivesController < ApplicationController
   end
 
   def update
+    authorize @archive
     if @archive.update(archive_params)
       redirect_to @archive, notice: 'Archive was successfully updated.'
     else
@@ -38,6 +45,7 @@ class ArchivesController < ApplicationController
   end
 
   def destroy
+    authorize @archive
     @archive.destroy
     redirect_to archives_url, notice: 'Archive was successfully destroyed.'
   end
