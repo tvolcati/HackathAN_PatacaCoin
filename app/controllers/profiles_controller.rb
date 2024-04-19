@@ -4,10 +4,20 @@ class ProfilesController < ApplicationController
   def show; end
 
   def update
-    if @user.update(profile_params)
-      redirect_to profile_path(@user), notice: 'Profile updated successfully.'
+    if params[:claim_tokens]
+      @user.claimed_tokens += @user.unclaimed_tokens
+      @user.unclaimed_tokens = 0
+      if @user.save
+        redirect_to profile_path(@user), notice: 'PatacaTokens successfully claimed.'
+      else
+        render :show, alert: 'Failed to claim PatacaTokens.'
+      end
     else
-      render :show
+      if @user.update(profile_params)
+        redirect_to profile_path(@user), notice: 'Profile updated successfully.'
+      else
+        render :show
+      end
     end
   end
 
@@ -18,6 +28,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:user).permit(:wallet_address)
+    params.require(:user).permit(:wallet_address, :claimed_tokens, :unclaimed_tokens)
   end
 end
