@@ -70,3 +70,33 @@ div {
     width: fit-content;
     align-items: center;
 }
+
+.centerLeftForInputs {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    margin: 0px 0px 12px 0px;
+    border: 0px;
+    border-radius: 0px 0px 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: left;
+    width: 100%;
+    background-color: rgba(18, 17, 46, 0.7);
+}
+
+.Cirar {
+    background-color: rgba(18, 17, 46, 0.7);
+    margin: 0px;
+    border: 0px;
+    padding: 12px 10px;
+    margin-top: 8px;
+    border-radius: 1rem 1rem 0px 0px;
+}
+
+.login {
+    padding: 12px 18px;
+    text-align: center;
+}
