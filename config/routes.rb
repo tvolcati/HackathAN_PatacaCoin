@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  
   resources :reviews, only: [:index, :show]
+  resources :profiles, only: [:show]
 end
-

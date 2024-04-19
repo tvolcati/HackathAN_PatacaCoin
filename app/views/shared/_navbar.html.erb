@@ -15,6 +15,9 @@
             <%= link_to "Inicio", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
+            <%= link_to "Meu perfil", profile_path(current_user.id), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Ver arquivos", archives_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
