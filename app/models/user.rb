@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   validates :unclaimed_tokens, :claimed_tokens, numericality: { greater_than_or_equal_to: 0 }
-  validates :wallet_address, uniqueness: true
 
   validates :type, inclusion: { in: ['Professional', 'Student', 'Admin'] }
   devise :database_authenticatable, :registerable,
