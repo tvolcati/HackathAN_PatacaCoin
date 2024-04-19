@@ -6,3 +6,8 @@
 2024-04-18 13:43:25.533 -03 [51761] LOG:  database system is ready to accept connections
 2024-04-18 14:27:06.420 -03 [54996] ERROR:  column "title" of relation "archives" already exists
 2024-04-18 14:27:06.420 -03 [54996] STATEMENT:  ALTER TABLE "archives" ADD "title" character varying
+2024-04-18 21:11:13.214 -03 [81475] ERROR:  constraint "fk_rails_74a66bd6c5" for relation "reviews" already exists
+2024-04-18 21:11:13.214 -03 [81475] STATEMENT:  ALTER TABLE "reviews" ADD CONSTRAINT "fk_rails_74a66bd6c5"
+	FOREIGN KEY ("user_id")
+	  REFERENCES "users" ("id")
+	 ON DELETE CASCADE

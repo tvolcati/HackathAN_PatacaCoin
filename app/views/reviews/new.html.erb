@@ -1,0 +1,37 @@
+<!-- app/views/reviews/new.html.erb -->
+<h1>New Review for "<%= @archive.title %>"</h1>
+
+<%= simple_form_for([@archive, @review]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <p><strong>Title:</strong> <%= @archive.title %></p> <!-- Non-editable title -->
+    <%= f.input :subject %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :language %>
+    <%= f.input :date, as: :date %>
+    <%= f.input :ambito_e_conteudo, as: :text %>
+    <%= f.input :estado_de_ponto_de_acesso, collection: ['Accessível', 'Restrito', 'Confidencial', 'Outro'], prompt: "Select Estado de Ponto de Acesso" %>
+    <%= f.input :pontos_de_acesso_e_indexacao_de_assuntos, as: :text %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Submit Review' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Archive', archive_path(@archive), class: 'btn btn-default' %>
+
+<style>
+  .btn {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .btn:hover {
+    background-color: #0056b3;
+  }
+</style>
