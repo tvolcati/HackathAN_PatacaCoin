@@ -1,0 +1,72 @@
+
+.button {
+    padding: 14px 18px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.buttonBlue {
+    background: linear-gradient(#39A7FF , #0e5d9c);
+}
+
+.buttonOrange {
+    background: linear-gradient(#FB6D48 , #d4202c);
+}
+
+.center {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 0px 32px 0px;
+    font-size: 5rem;
+    text-align: center;
+    background-color: rgba(18, 17, 46, 0.7);
+    border-radius: 2rem;
+    margin-top: 16px ;
+}
+
+.ForBtn {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+.sub {
+    text-align: center;
+    font-size: large;
+    padding: 0px 12px
+}
+
+body {
+    
+    background-image: url("museum.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-image: url("museum.jpg");
+    background-attachment: fixed;
+}
+
+div {
+    color: white;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    column-gap: 64px;
+    width: fit-content;
+    align-items: center;
+}

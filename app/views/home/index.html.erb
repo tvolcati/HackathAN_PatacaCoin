@@ -1,5 +1,17 @@
 <!-- app/views/home/index.html.erb -->
-<h1>Welcome to the Archive Info Manager</h1>
+<div class="center">
+<h1 id ="title">Pataca: Centro dos Arquivos Nacionais</h1>
 
-<%= link_to 'New Archive', new_archive_path, class: 'btn btn-primary', role: 'button' %>
-<%= link_to 'View Archives', archives_path, class: 'btn btn-secondary', role: 'button' %>
+<h2 class="sub">Participe você também dessa comunidade e faça parte de um pouco da história de nosso país!</h2>
+
+<div class='icons'>
+    <img src="<%= asset_path('icon1.png') %>" alt='papel antigo' class='icones'>
+    <img src="<%= asset_path('icon2.png') %>" alt='papel antigo' class='icones'>
+    <img src="<%= asset_path('icon3.png') %>" alt='papel antigo' class='icones'>
+
+</div>
+<div class="ForBtn">
+<%= link_to 'Adicionar Arquivos', new_archive_path, class: 'button buttonBlue', role: 'button' %>
+<%= link_to 'Ver Arquivos', archives_path, class: 'button buttonOrange', role: 'button' %>
+</div>
+</div>
