@@ -1,18 +1,19 @@
 <!-- app/views/devise/registrations/new.html.erb -->
+<h1 class="Cirar">Criar Conta</h1>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
+  <div class="form-inputs centerLeftForInputs">
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true, hint: "Minimum is #{Devise.password_length.min} characters" %>
     <%= f.input :password_confirmation, required: true %>
-
     <%= f.input :type, collection: ['Professional', 'Student'], prompt: "Select Your Role", label: "I am a: " %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class:'login buttonOrange' %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
+
