@@ -1,6 +1,6 @@
 # app/controllers/archives_controller.rb
 class ArchivesController < ApplicationController
-  before_action :set_archive, only: %i[show edit update destroy download]
+  before_action :set_archive, only: %i[show edit update destroy download review]
 
   def index
     @archives = policy_scope(Archive)
@@ -23,6 +23,12 @@ class ArchivesController < ApplicationController
 
   def edit
     authorize @archive
+  end
+
+  def review
+    authorize @archive
+    @review = @archive.reviews.new
+    render 'reviews/new'
   end
 
   def create
@@ -67,7 +73,7 @@ class ArchivesController < ApplicationController
       params.require(:archive).permit(:file, :title, :category)
     else
       # For other actions, such as 'update', permit all the other fields.
-      params.require(:archive).permit(:identifier, :registration_date, :location, :originator_agent, :recipient_agent, :production_date, :transmission_date, :reception_date, :related_activities, :related_documents, :title, :subject, :description, :coverage, :language, :encoding_format, :media_type, :compression_encryption, :hardware_software_dependencies, :aggregation_level, :extent, :preservation_responsibility, :preservation_action_date, :preservation_activity_type, :preservation_impact, :next_preservation_action, :physical_storage_support, :access_use_history)
+      params.require(:archive).permit(:title, :category, :subject, :description, :language, :date, :ambito_e_conteudo, :estado_de_ponto_de_acesso, :pontos_de_acesso_e_indexacao_de_assuntos)
     end
   end
 end

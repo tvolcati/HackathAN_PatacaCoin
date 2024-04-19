@@ -1,6 +1,8 @@
 # app/models/archive.rb
 class Archive < ApplicationRecord
   has_one_attached :file
+  has_many :reviews, dependent: :destroy
+
 
   validates :file, presence: true
   validates :file, size: { less_than: 10.megabytes }

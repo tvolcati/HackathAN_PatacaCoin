@@ -3,15 +3,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
   resources :archives do
     member do
       get :download
+      get :review
+    end
+    resources :reviews, only: [:new, :create, :edit, :update] do
+      member do
+        patch :validate
+      end
     end
   end
-
-  resources :archives
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :reviews, only: [:index, :show]
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_18_211250) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_18_232818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,38 +43,36 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_211250) do
   end
 
   create_table "archives", force: :cascade do |t|
-    t.string "identifier"
-    t.datetime "registration_date"
-    t.string "location"
-    t.string "originator_agent"
-    t.string "recipient_agent"
-    t.datetime "production_date"
-    t.datetime "transmission_date"
-    t.datetime "reception_date"
-    t.text "related_activities"
-    t.text "related_documents"
     t.string "title"
     t.string "subject"
     t.text "description"
-    t.text "coverage"
     t.string "language"
-    t.string "encoding_format"
-    t.string "media_type"
-    t.string "compression_encryption"
-    t.text "hardware_software_dependencies"
-    t.string "aggregation_level"
-    t.string "extent"
-    t.string "preservation_responsibility"
-    t.datetime "preservation_action_date"
-    t.string "preservation_activity_type"
-    t.text "preservation_impact"
-    t.text "next_preservation_action"
-    t.text "physical_storage_support"
-    t.text "access_use_history"
-    t.binary "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.date "date"
+    t.text "ambito_e_conteudo"
+    t.string "estado_de_ponto_de_acesso"
+    t.text "pontos_de_acesso_e_indexacao_de_assuntos"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "archive_id", null: false
+    t.string "status"
+    t.boolean "validated"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "title"
+    t.date "date"
+    t.text "ambito_e_conteudo"
+    t.string "estado_de_ponto_de_acesso"
+    t.text "pontos_de_acesso_e_indexacao_de_assuntos"
+    t.string "subject"
+    t.string "language"
+    t.text "description"
+    t.index ["archive_id"], name: "index_reviews_on_archive_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -92,4 +90,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_211250) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "archives"
+  add_foreign_key "reviews", "users"
 end

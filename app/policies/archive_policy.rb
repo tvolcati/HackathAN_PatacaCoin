@@ -14,6 +14,10 @@ class ArchivePolicy < ApplicationPolicy
     true
   end
 
+  def review?
+    user.is_a?(Professional) || user.is_a?(Admin) || user.is_a?(Student)
+  end
+
   def create?
     user.is_a?(Admin)
   end
@@ -24,10 +28,6 @@ class ArchivePolicy < ApplicationPolicy
 
   def update?
     user.is_a?(Admin)
-  end
-
-  def review?
-    user.is_a?(Admin) || user.is_a?(Professional)
   end
 
   def edit?

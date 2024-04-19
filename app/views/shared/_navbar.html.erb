@@ -18,6 +18,9 @@
             <%= link_to "Ver arquivos", archives_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
+            <%= link_to "Ver reviews", reviews_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-link nav-link" %>
           </li>
         <% else %>
