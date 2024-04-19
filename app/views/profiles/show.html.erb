@@ -1,1 +1,49 @@
-<h1>oi</h1>
+<!-- app/views/users/show.html.erb -->
+<h1>User Profile</h1>
+
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Claimed Tokens:</strong> <%= @user.claimed_tokens %></p>
+<p><strong>Unclaimed Tokens:</strong> <%= @user.unclaimed_tokens %></p>
+<p><strong>Metamask Address:</strong> <%= @user.wallet_address %></p>
+
+<h2>Update Wallet Address</h2>
+<%= form_with(model: @user, url: profile_path(@user), local: true) do |form| %>
+  <div class="form-inputs">
+    <%= form.label :wallet_address, 'Wallet Address:' %>
+    <%= form.text_field :wallet_address, name: 'user[wallet_address]' %> <!-- Manually setting the name attribute -->
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit 'Update Wallet Address' %>
+  </div>
+<% end %>
+
+<style>
+  .form-inputs label {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .form-inputs input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+
+  .form-actions {
+    margin-top: 20px;
+  }
+
+  .form-actions input[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
