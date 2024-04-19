@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get :download
       get :review
     end
-    resources :reviews, only: [:new, :create, :edit, :update] do
+    resources :reviews, except: [:index, :show] do
       member do
         patch :validate
       end
@@ -17,3 +17,4 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:index, :show]
 end
+

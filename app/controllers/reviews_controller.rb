@@ -1,8 +1,11 @@
 # app/controllers/reviews_controller.rb
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :validate]
+  after_action :verify_authorized, except: [:index]
+  after_action :verify_policy_scoped, only: [:index]
 
   def index
+    @reviews = policy_scope(Review)
     if params[:status].present?
       @reviews = Review.where(status: params[:status])
     else
@@ -27,6 +30,7 @@ class ReviewsController < ApplicationController
 
   # app/controllers/reviews_controller.rb
   def create
+    authorize @review
     @archive = Archive.find(params[:archive_id])  # Set @archive here as well
     @review = @archive.reviews.build(review_params)
     @review.user = current_user
@@ -40,20 +44,31 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    authorize @review
     @archive = @review.archive  # Fetch the associated archive
   end
 
   def validate
-    authorize @review
-    if params[:status] == 'approved'
+    @archive = @review.archive
+    case params[:status]
+    when 'approved'
       @review.update(status: 'approved')
-      @review.archive.update(review_params)
-      redirect_to reviews_path, notice: 'Review has been approved and archive updated.'
-    elsif params[:status] == 'declined'
+      @archive.update(
+        title: @review.title,
+        subject: @review.subject,
+        description: @review.description,
+        language: @review.language,
+        date: @review.date,
+        ambito_e_conteudo: @review.ambito_e_conteudo,
+        estado_de_ponto_de_acesso: @review.estado_de_ponto_de_acesso,
+        pontos_de_acesso_e_indexacao_de_assuntos: @review.pontos_de_acesso_e_indexacao_de_assuntos
+      )
+      redirect_to reviews_path, notice: 'Review approved and archive updated.'
+    when 'declined'
       @review.update(status: 'declined')
-      redirect_to reviews_path, notice: 'Review has been declined.'
+      redirect_to reviews_path, notice: 'Review declined.'
     else
-      redirect_to review_path(@review), alert: 'Invalid status.'
+      render :show, alert: 'Invalid operation.'
     end
   end
 

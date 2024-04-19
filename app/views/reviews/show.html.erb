@@ -15,8 +15,16 @@
     <%= link_to 'Download File', rails_blob_path(@archive.file, disposition: "attachment"), class: 'button' %>
   <% end %>
 
-  <%= link_to 'Approve', validate_archive_review_path(@archive, @review, status: 'approved'), method: :patch, class: 'button' %>
-  <%= link_to 'Decline', validate_archive_review_path(@archive, @review, status: 'declined'), method: :patch, class: 'button' %>
+  <form action="<%= validate_archive_review_path(@archive, @review, status: 'approved') %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Approve">
+  </form>
+  <form action="<%= validate_archive_review_path(@archive, @review, status: 'declined') %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="Decline">
+  </form>
 </div>
 
 <style>
