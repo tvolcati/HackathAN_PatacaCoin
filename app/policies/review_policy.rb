@@ -21,7 +21,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    user.is_a?(Professional) || user.is_a?(Admin)
+    true
   end
 
   def new?
