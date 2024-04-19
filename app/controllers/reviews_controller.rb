@@ -1,7 +1,7 @@
 # app/controllers/reviews_controller.rb
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :validate]
-  after_action :verify_authorized, except: [:index]
+  after_action :verify_authorized, except: [:index, :create]
   after_action :verify_policy_scoped, only: [:index]
 
   def index
@@ -30,7 +30,6 @@ class ReviewsController < ApplicationController
 
   # app/controllers/reviews_controller.rb
   def create
-    authorize @review
     @archive = Archive.find(params[:archive_id])  # Set @archive here as well
     @review = @archive.reviews.build(review_params)
     @review.user = current_user
@@ -50,6 +49,7 @@ class ReviewsController < ApplicationController
 
   def validate
     @archive = @review.archive
+    authorize @review
     case params[:status]
     when 'approved'
       @review.update(status: 'approved')
@@ -63,9 +63,16 @@ class ReviewsController < ApplicationController
         estado_de_ponto_de_acesso: @review.estado_de_ponto_de_acesso,
         pontos_de_acesso_e_indexacao_de_assuntos: @review.pontos_de_acesso_e_indexacao_de_assuntos
       )
-      redirect_to reviews_path, notice: 'Review approved and archive updated.'
+      @review.user.unclaimed_tokens += 1
+      @review.user.save!
+
+      current_user.unclaimed_tokens += 0.1
+      current_user.save!
+      redirect_to reviews_path, notice: 'Review approved, check your PataTokens.'
     when 'declined'
       @review.update(status: 'declined')
+      current_user.unclaimed_tokens += 0.1
+      current_user.save!
       redirect_to reviews_path, notice: 'Review declined.'
     else
       render :show, alert: 'Invalid operation.'
