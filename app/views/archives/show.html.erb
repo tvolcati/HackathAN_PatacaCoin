@@ -3,15 +3,20 @@
 
 <div class="archive-details">
   <p><strong>Title:</strong> <%= @archive.title %></p>
-  <p><strong>Category:</strong> <%= @archive.category %></p>
-  <% # Add other metadata fields here %>
+  <p><strong>Subject:</strong> <%= @archive.subject %></p>
   <p><strong>Description:</strong> <%= @archive.description %></p>
-  <p><strong>Originator Agent:</strong> <%= @archive.originator_agent %></p>
+  <p><strong>Language:</strong> <%= @archive.language %></p>
+  <p><strong>Date:</strong> <%= @archive.date.strftime("%d/%m/%Y") if @archive.date %></p>
+  <p><strong>Âmbito e Conteúdo:</strong> <%= @archive.ambito_e_conteudo %></p>
+  <p><strong>Estado de Ponto de Acesso:</strong> <%= @archive.estado_de_ponto_de_acesso %></p>
+  <p><strong>Pontos de Acesso e Indexação de Assuntos:</strong> <%= @archive.pontos_de_acesso_e_indexacao_de_assuntos %></p>
 
+  <%# Assuming file uploads are still relevant %>
   <% if @archive.file.attached? %>
-    <%= link_to 'Download File', download_archive_path(@archive), class: 'button' %>
+    <%= link_to 'Download File', rails_blob_path(@archive.file, disposition: "attachment"), class: 'button' %>
   <% end %>
-  <%= link_to 'Edit', edit_archive_path(@archive), class: 'button' %>
+
+  <%= link_to 'Review Metadata', review_archive_path(@archive), class: 'button' %>
 </div>
 
 <style>
