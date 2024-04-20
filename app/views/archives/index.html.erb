@@ -1,15 +1,17 @@
 <!-- app/views/archives/index.html.erb -->
-<h1>Archivos</h1>
+<div class="centerLeftForInputs">
+<h1>Arquivos</h1>
 
 <%= form_with(url: archives_path, method: :get, local: true) do |form| %>
-  <%= form.label :category, 'Filter by Category:' %>
+  <%= form.label :category, 'Filtrar por Categoria:' %>
   <%= form.select :category, options_for_select(@categories), include_blank: 'All' %>
-  <%= form.submit 'Filter' %>
+  <%= form.submit 'Filtrar' %>
 <% end %>
+</div>
 
 <div class="archives-grid">
   <% @archives.each do |archive| %>
-    <div class="archive-card">
+    <div class="archive-card cardWhite">
       <%= link_to archive_path(archive) do %>
         <h4><%= archive.title %></h4>
         <% if archive.file.attached? %>

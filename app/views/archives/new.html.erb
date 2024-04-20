@@ -1,16 +1,18 @@
 <!-- app/views/archives/new.html.erb -->
-<h1>New Archive</h1>
+<div class="darkScreen">
+<h1 class="Cirar">New Archive</h1>
 
 <%= simple_form_for @archive do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs centerLeftForInputs">
     <%= f.input :title %>
     <%= f.input :category, collection: ["Textual", "Sonoro", "Iconografico", "Cartografico", "Audio-Visual"], prompt: "Select a Category" %>
     <%= f.input :file, as: :file %>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions buttonOrange login button">
     <%= f.button :submit %>
+  </div>
   </div>
 <% end %>
