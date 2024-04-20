@@ -1,13 +1,14 @@
 <!-- app/views/reviews/new.html.erb -->
-<h1>New Review for "<%= @archive.title %>"</h1>
+<div class="Profile">
+<h1 class="Ur">New Review for "<%= @archive.title %>"</h1>
 
 <%= simple_form_for([@archive, @review]) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs question">
     <p><strong>Title:</strong> <%= @archive.title %></p> <!-- Non-editable title -->
-    <%= f.input :subject %>
-    <%= f.input :description, as: :text %>
+    <div class = "each"><%= f.input :subject %></div>
+    <div class = "each"><%= f.input :description, as: :text %></div>
     <%= f.input :language %>
     <%= f.input :date, as: :date %>
     <%= f.input :ambito_e_conteudo, as: :text %>
@@ -15,18 +16,23 @@
     <%= f.input :pontos_de_acesso_e_indexacao_de_assuntos, as: :text %>
   </div>
 
+  <div class="col">
   <div class="form-actions">
     <%= f.button :submit, 'Submit Review' %>
   </div>
 <% end %>
-
+<div>
 <%= link_to 'Back to Archive', archive_path(@archive), class: 'btn btn-default' %>
+</div>
+</div>
+
+</div>
 
 <style>
   .btn {
     margin: 5px;
     padding: 10px 15px;
-    background-color: #007bff;
+    background: linear-gradient(#39A7FF , #0e5d9c);
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -35,3 +41,4 @@
     background-color: #0056b3;
   }
 </style>
+</div>

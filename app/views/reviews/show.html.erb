@@ -1,4 +1,5 @@
 <!-- app/views/reviews/show.html.erb -->
+<div class="centerLeftForInputs">
 <h1>Review Details for <%= @archive.title %></h1>
 
 <div class="review-details">
@@ -10,7 +11,7 @@
   <p><strong>Âmbito e Conteúdo:</strong> <%= @review.ambito_e_conteudo %></p>
   <p><strong>Estado de Ponto de Acesso:</strong> <%= @review.estado_de_ponto_de_acesso %></p>
   <p><strong>Pontos de Acesso e Indexação de Assuntos:</strong> <%= @review.pontos_de_acesso_e_indexacao_de_assuntos %></p>
-
+</div>
   <% if @archive.file.attached? %>
     <%= link_to 'Download File', rails_blob_path(@archive.file, disposition: "attachment"), class: 'button' %>
   <% end %>
@@ -35,7 +36,7 @@
     background-color: #007bff;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
   }
   .button:hover {
     background-color: #0056b3;

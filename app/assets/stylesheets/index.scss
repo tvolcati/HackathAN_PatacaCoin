@@ -17,6 +17,20 @@
     background: linear-gradient(#FB6D48 , #d4202c);
 }
 
+.cardWhite {
+    background: linear-gradient(#f7f7f7 , #d0cbcb4f);
+    border-radius: 10px;
+    color: black;
+    word-wrap: normal;
+}
+
+.cardWhiter {
+    background: linear-gradient(#f7f7f7 , #dcd7d7);
+    border-radius: 10px;
+    color: black;
+    word-wrap: normal;
+}
+
 .center {
     color: white;
     display: flex;
@@ -30,6 +44,10 @@
     background-color: rgba(18, 17, 46, 0.7);
     border-radius: 2rem;
     margin-top: 16px ;
+}
+
+.darkScreen {
+    background-color: rgba(18, 17, 46, 0.7);
 }
 
 .ForBtn {
@@ -71,6 +89,23 @@ div {
     align-items: center;
 }
 
+.Ur {
+    text-decoration: underline;
+}
+
+.Profile {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: left;
+    padding: 32px 0px 12px 8px;
+    text-align: left;
+    background-color: rgba(18, 17, 46, 0.7);
+    border-radius: 2rem;
+    margin-top: 8px ;
+}
+
 .centerLeftForInputs {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -99,4 +134,20 @@ div {
 .login {
     padding: 12px 18px;
     text-align: center;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: left;
+    padding: 12px 18px;
+    text-align: left;
+}
+
+.each{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-content: center;
 }
