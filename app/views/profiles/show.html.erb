@@ -47,6 +47,7 @@
 </script>
 
 <%= form_with(model: @user, url: profile_path(@user), method: :patch, local: true, id: "claim_tokens_form") do |form| %>
+  <input type="hidden" name="user[claim_tokens]" value="true" id="user_claim_tokens">
   <%= form.hidden_field :claim_tokens, value: true %>
 <% end %>
 <div>
@@ -733,12 +734,14 @@
                 const result = await contract.methods.mint(userAddress, <%= @user.unclaimed_tokens %>).send({ from: userAddress });
 
                 console.log('Mint successful:', result);
+
             } catch (error) {
                 console.error('Error minting PataToken:', error);
             }
         } else {
             alert('Por favor, instale o MetaMask para usar essa funcionalidade.');
        }
+      document.getElementById('claim_tokens_form').submit();
     }
 </script>
 

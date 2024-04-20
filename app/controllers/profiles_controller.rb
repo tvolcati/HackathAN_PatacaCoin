@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   def show; end
 
   def update
-    if params[:claim_tokens]
+    if params[:user][:claim_tokens]
       @user.claimed_tokens += @user.unclaimed_tokens
       @user.unclaimed_tokens = 0
       if @user.save
